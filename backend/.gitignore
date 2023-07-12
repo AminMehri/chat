@@ -1,0 +1,8 @@
+# Virtual Env
+venv/
+backend/__pycache__/
+
+# Migrations
+Account/migrations/
+Admin/migrations/
+Chat/migrations/
