@@ -55,9 +55,9 @@ class SignUp(APIView):
             password = request.data.get('password')
 
             if User.objects.filter(email=email).exists():
-                return Response({"message": "این ایمیل قبلا ثبت شده"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"message": "email is already exist"}, status=status.HTTP_400_BAD_REQUEST)
             if User.objects.filter(username=username).exists():
-                return Response({"message": "این نام کاربری قبلا ثبت شده"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"message": "username is already exist"}, status=status.HTTP_400_BAD_REQUEST)
             user = User.objects.create_user(username=username, email=email, password=password)
 
             token = rand_ascii(100)

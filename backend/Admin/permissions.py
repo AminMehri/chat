@@ -5,7 +5,7 @@ from Account.models import Account
 
 class IsVerify(BasePermission):
     def has_permission(self, request, view):
-        self.message = 'شما ایمیل خودرا تایید نکرده اید.'
+        self.message = 'you don not confirm your email'
         if Account.objects.filter(user=request.user, email_verified=False).exists():
             return False
         return bool(request.user and request.user.is_authenticated)
@@ -14,7 +14,7 @@ class IsVerify(BasePermission):
 
 class IsSuperUser(BasePermission):
     def has_permission(self, request, view):
-        self.message = 'شما قابلیت دسترسی به این بخش را ندارید.'
+        self.message = 'you do not able to access here'
         if not Admin.objects.filter(user__user=request.user).exists():
             return False
         admin = Admin.objects.get(user__user=request.user)
@@ -24,7 +24,7 @@ class IsSuperUser(BasePermission):
 
 class IsAdminUser(BasePermission):
     def has_permission(self, request, view):
-        self.message = 'شما قابلیت دسترسی به این بخش را ندارید.'
+        self.message = 'you do not able to access here'
         if not Admin.objects.filter(user__user=request.user).exists():
             return False
         admin = Admin.objects.get(user__user=request.user)
