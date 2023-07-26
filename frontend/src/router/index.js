@@ -7,7 +7,7 @@ import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ConfirmEmailView from '../views/ConfirmEmailView.vue'
-
+import ChatView from '../views/ChatView.vue'
 
 const routes = [
   {
@@ -44,6 +44,12 @@ const routes = [
     name: 'confirm_email',
     component: ConfirmEmailView,
   },
+  {
+    path: '/:username',
+    name: 'chat_view',
+    component: ChatView,
+  },
+
 ]
 
 const router = createRouter({
