@@ -21,7 +21,7 @@ def error_text(error_obj):
 
 
 class ConversationView(APIView):
-    permission_classes = (IsVerify, )
+    permission_classes = (IsAuthenticated, IsVerify)
 
     def get(self, request):
         try:
@@ -34,20 +34,41 @@ class ConversationView(APIView):
             conversation_account = Conversation.objects.filter(account__user=request.user)
             conversation_another_account = Conversation.objects.filter(second_account__user=request.user)         
 
-            conversations = sorted(chain(conversation_account, conversation_another_account), key=lambda instance: instance.last_update)
+            conversations = sorted(chain(conversation_account, conversation_another_account), key=lambda instance: instance.last_update, reverse=True)
 
             for conver in conversations:
+
+                try:
+                    c = Conversation.objects.get(id=conver.id)
+                    mes = Ticket.objects.filter(conversation=c).order_by('-created_at')[:1]
+                    for m in mes:
+                        message = m.text
+                        sender = m.account
+                except Exception as E:
+                    print(E)
+                    message = ''
+                
+                if account == sender:
+                    last_by_me = True
+                else: 
+                    last_by_me = False
+
                 if account == conver.account:
                     username = conver.second_account.user.username
                     is_seen = conver.is_seen_account
+                    contact_seen = conver.is_seen_second_account
                 
                 if account == conver.second_account:
                     username = conver.account.user.username
                     is_seen = conver.is_seen_second_account
+                    contact_seen = conver.is_seen_account
 
                 data.append({
                     "id": conver.id,
                     "with": username,
+                    "last_message": message,
+                    "last_by_me": last_by_me,
+                    "contact_seen": contact_seen,
                     "is_seen": is_seen,
                     "last_update": datetime.strftime(conver.last_update, "%Y-%m-%d %H:%M"),
                 })

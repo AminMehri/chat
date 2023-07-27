@@ -13,13 +13,13 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta: { loginRequired: true }
   },
   {
     path: '/about',
     name: 'about',
     component: AboutView,
-    meta: { loginRedirect: true }
   },
   {
     path: '/profile',
@@ -45,9 +45,10 @@ const routes = [
     component: ConfirmEmailView,
   },
   {
-    path: '/:username',
+    path: '/chat/:username',
     name: 'chat_view',
     component: ChatView,
+    meta: { loginRequired: true }
   },
 
 ]
@@ -62,11 +63,11 @@ router.beforeEach((to, from, next) => {
     if (store.state.isAuthenticated) {
       next()
     } else {
-      next("/")
+      next("/login")
     }
   }else if (to.matched.some(record => record.meta.loginRedirect)) {
     if (store.state.isAuthenticated) {
-      next("/profile")
+      next("/")
     } else {
       next()
     }
