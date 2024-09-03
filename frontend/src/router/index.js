@@ -45,7 +45,7 @@ const routes = [
     component: ConfirmEmailView,
   },
   {
-    path: '/chat/:username',
+    path: '/chat/:id',
     name: 'chat_view',
     component: ChatView,
     meta: { loginRequired: true }

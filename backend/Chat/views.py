@@ -65,7 +65,7 @@ class ConversationView(APIView):
 
                 data.append({
                     "id": conver.id,
-                    "with": username,
+                    "contact": username,
                     "last_message": message,
                     "last_by_me": last_by_me,
                     "contact_seen": contact_seen,

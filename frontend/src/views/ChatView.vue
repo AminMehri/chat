@@ -1,77 +1,41 @@
 <template>
-    <div class="home">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-3">
-            <router-link to="/chat/aminmehri" class="row g-0 open-chat">
-            <div class="col-3">
-              <img src="../assets/groot-moraba.jpg" class="img-thumbnail rounded-circle profile-img">
-            </div>
-            <div class="col-9">
-              <span class="d-block">Amin</span>
-              <p class="d-inline">hello kay kay how are you doing today?</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check float-end" viewBox="0 0 16 16">
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-              </svg>
-            </div>
-          </router-link>
-          <router-link to="/chat/aminmehri" class="row g-0 open-chat">
-            <div class="col-3">
-              <img src="../assets/groot-moraba.jpg" class="img-thumbnail rounded-circle profile-img">
-            </div>
-            <div class="col-9">
-              <span class="d-block">Amin</span>
-              <p class="d-inline">hello kay kay how are you doing today?</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-all float-end" viewBox="0 0 16 16">
-                <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
-              </svg>
-            </div>
-          </router-link>
-          <router-link to="/chat/aminmehri" class="row g-0 open-chat">
-            <div class="col-3">
-              <img src="../assets/groot-moraba.jpg" class="img-thumbnail rounded-circle profile-img">
-            </div>
-            <div class="col-9">
-              <span class="">Amin</span>
-              <p>hello kay kay how are you doing today?</p>
-            </div>
-          </router-link>
-          <router-link to="/chat/aminmehri" class="row g-0 open-chat">
-            <div class="col-3">
-              <img src="../assets/groot-moraba.jpg" class="img-thumbnail rounded-circle profile-img">
-            </div>
-            <div class="col-9">
-              <span class="">Amin</span>
-              <p>hello kay kay how are you doing today?</p>
-            </div>
-          </router-link>
-          </div>
-          <div class="col-9">
-            <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
-            <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2 ">hiii</p>
-            <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
-            <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
-            <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
-            <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
-            <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
-            <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
-
-          </div>          
+  <div class="home">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+          <Conversations />
         </div>
+        <div class="col-9">
+          <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
+          <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2 ">hiii</p>
+          <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
+          <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
+          <p class="host-message rounded py-1 px-2">hello asd ASD asd asd asd asd asd asd asd S ASd asd asd asd ASd asd as aS dasd A Sdasd a da s</p>
+          <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
+          <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
+          <p class="guest-message me-0 ms-auto text-end rounded py-1 px-2">hiii</p>
+          
+          <input type="text" class="w-75" placeholder="message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-send mx-2 pointer-cursor" viewBox="0 0 16 16">
+            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+          </svg>
+
+        </div>          
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
-  import HelloWorld from '@/components/HelloWorld.vue'
-  
-  export default {
-    name: 'HomeView',
-    components: {
-      HelloWorld
-    }
+<script>
+import Conversations from '@/components/Conversations.vue'
+
+export default {
+  name: 'ChatView',
+  components: {
+    Conversations
   }
-  </script>
+}
+</script>
   
   <style scoped>
   .profile-img{
@@ -96,5 +60,9 @@
   .guest-message {
     background-color: rgb(224, 241, 122);
     width: 25%;
+  }
+
+  .pointer-cursor{
+    cursor: pointer;
   }
   </style>

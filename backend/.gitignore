@@ -6,3 +6,6 @@ backend/__pycache__/
 Account/migrations/
 Admin/migrations/
 Chat/migrations/
+
+# Database
+db.sqlite3
